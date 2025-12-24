@@ -3,10 +3,6 @@ from datetime import datetime
 from Models.Car import Car
 from Models.User import User
 
-# prebaciti svu logiku mysql
-# dodati rentiranje automobila (do kada)
-# prilikom ispisivanja rentanog auta ispisati pored do kada (npr jos 5 dana)
-# ako je manje od 1 dana ispisati u satima (npr 10 sati )
 
 print("Opcije : "
       "\n1. Dodaj korisnika "
