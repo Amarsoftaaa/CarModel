@@ -21,7 +21,7 @@ class User(Db):
     @age.setter
     def age(self, age):
         if age < 18:
-            raise ValueError("Korisnik nije punoljetan")
+            raise ValueError("The user is not of legal age.")
         self.__age = age
 
     @property
@@ -48,9 +48,9 @@ class User(Db):
             )
             self._connection.commit()
             self._connection.close()
-            print("Korisnik je uspješno dodat u bazu.")
+            print("The user has been successfully added to the database.")
         except Exception as e:
-            print("Greška prilikom ubacivanja:", e)
+            print("Error while inserting:", e)
 
 
         User.ALL_USERS.append([self.__name, self.__age])
