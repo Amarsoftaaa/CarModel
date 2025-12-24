@@ -5,11 +5,12 @@ from Models.User import User
 
 
 print("Opcije : "
-      "\n1. Dodaj korisnika "
-      "\n2. Prikazi korisnika "
-      "\n3. Prikazi raspoloziva vozila"
-      "\n4. Prikazi rentana vozila"
-      "\n5. Zelim rentati vozilo")
+      "\n1. Add new user "
+      "\n2. View users "
+      "\n3. View available cars"
+      "\n4. View renal cars"
+      "\n5. I want to rent a car")
+
 
 available_options = [1, 2, 3, 4, 5]
 
@@ -17,11 +18,11 @@ option = None
 
 while option is None:
 
-    options = int(input("Unesite opciju koju zelite "))
+    options = int(input("Enter the option you want. "))
     print(options)
 
     if options not in available_options:
-        raise ValueError("Nepoznata opcija")
+        raise ValueError("Unknown option")
 
     if options == 1:
         user = User()
@@ -40,19 +41,19 @@ while option is None:
             for car in Car.VALID_CARS[brand]:
                 if not car["rented"] and options == 3:
                     print(car)
-                    print("\nAko zelite rentati vozilo pritisnite 5")
+                    print("\n If you want to rent a vehicle, click 5")
                 elif car["rented"] and options == 4:
                     rented_until_date = datetime.strptime(car["rented_until"], "%d.%m.%Y")
                     today = datetime.today()
                     remaining_days = (rented_until_date - today).days
-                    print(f" {brand}{car} ostalo je jos {remaining_days} dana do kraja rente")
+                    print(f" {brand}{car}"There are {remaining_days} days left until the end of the rent.")
                     option = None
     elif options == 5:
-        car_rented = input("Koje auto zelite rentati")
-        car_until = input("Do kada zelite rentati auto \n(dd.mm.yyyy)\n")
+        car_rented = input("Which car do you want to rent?")
+        car_until = input("How long do you want to rent the car for? \n(dd.mm.yyyy)\n")
         car_until_gultig= datetime.strptime(car_until,"%d.%m.%Y")
         today_rent=datetime.today()
         total_rent_days = car_until_gultig-today_rent
-        print(f"Uspjesno ste rentali {car_rented} do {car_until} godine.")
+        print(f"You have successfully rented {car_rented} until {car_until}.")
 
 
